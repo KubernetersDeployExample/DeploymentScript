@@ -1,6 +1,7 @@
 # Kubernetes Deploy Exaple
 
 -[x] nginx
--[x] splash
 
+
+-[x] splash
 more...
