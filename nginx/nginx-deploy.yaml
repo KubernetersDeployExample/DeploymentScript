@@ -1,0 +1,26 @@
+# deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-nginx
+  namespace: example-nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-cluster
+  template:
+    metadata:
+      labels:
+        app: nginx-cluster
+    spec:
+      containers:
+        - name: nginx-cluster
+          image: nginx
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 80
+
