@@ -1,3 +1,9 @@
+# namespaces
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: example-nginx
+---
 # deployment
 apiVersion: apps/v1
 kind: Deployment
