@@ -24,6 +24,7 @@ spec:
     spec:
       containers:
         - image: scrapinghub/splash
+          imagePullPolicy: IfNotPresent
           name: splash
           ports:
             - containerPort: 8050
