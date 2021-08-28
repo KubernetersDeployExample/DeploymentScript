@@ -5,7 +5,11 @@
 ## Deployment 
 
 ```shell
+# deployment
 kubectl apply -f https://raw.githubusercontent.com/KubernetersDeployExample/script/main/dashboard/dashboard.yaml
+# delete
+kubectl delete -f https://raw.githubusercontent.com/KubernetersDeployExample/script/main/dashboard/dashboard.yaml
+kubectl apply names
 ```
 
 ## Modify
