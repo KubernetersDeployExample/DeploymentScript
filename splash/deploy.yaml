@@ -37,3 +37,24 @@ spec:
               cpu: "4"
       restartPolicy: Always
 status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: splash
+  name: splash
+  namespace: splash
+spec:
+  type: NodePort
+  ports:
+    - name: "8050"
+      port: 8050
+      targetPort: 8050
+      nodePort: 30805
+  selector:
+    app: splash
+status:
+  loadBalancer: {}

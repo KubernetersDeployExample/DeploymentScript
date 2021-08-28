@@ -1,8 +1,8 @@
 # Kubernetes Deploy Exaple
 
--[x] nginx
-
--[x] splash
-
+- [x] nginx
+- [x] monitor
+- [x] splash
+- [x] dashboard
 
 more...
