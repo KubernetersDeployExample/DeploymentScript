@@ -197,6 +197,7 @@ data:
         target_label: kubernetes_pod_name
 
 ---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:

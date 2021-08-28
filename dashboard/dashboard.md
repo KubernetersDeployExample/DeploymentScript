@@ -2,6 +2,12 @@
 > Deployment Kubernetes Dashboard
 
 
+## Deployment 
+
+```shell
+kubectl apply -f https://raw.githubusercontent.com/KubernetersDeployExample/script/main/dashboard/dashboard.yaml
+```
+
 ## Modify
 > Custom modification details
 

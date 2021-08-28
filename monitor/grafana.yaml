@@ -52,9 +52,10 @@ spec:
               mountPath: /var
       volumes:
         - name: grafana-persistent-storage
-          emptyDir: {}
+          emptyDir: { }
 
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
