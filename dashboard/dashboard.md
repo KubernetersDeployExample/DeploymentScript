@@ -37,3 +37,22 @@ spec:
 
 ## Reference
 [URL](https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml) :https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml
+
+## Helm Deployment
+
+> repo: kubernetes-dashboard https://kubernetes.github.io/dashboard/ 
+
+## init repo
+```shell
+helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/ && \
+helm repo update
+```
+
+### create namespace
+
+```shell
+# reset deployment
+# kubectl delete ns monitor && kubectl create ns monitor
+kubectl create ns monitor
+
+```

@@ -1,0 +1,27 @@
+#
+#  create authorization
+#
+
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: payne
+  namespace: monitor
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: payne
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: payne
+  namespace: monitor
+
+# get token
+# kubectl -n monitor describe secret $(kubectl -n  monitor get secret | grep payne | awk '{print $1}')
