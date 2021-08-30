@@ -54,5 +54,6 @@ helm repo update
 # reset deployment
 # kubectl delete ns monitor && kubectl create ns monitor
 kubectl create ns monitor
-
+# install kubernetes-dashboard
+helm install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard -n monitor
 ```
