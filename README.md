@@ -2,7 +2,10 @@
 
 - [x] nginx
 - [x] monitor
+	- [x] dashboard
+	- [x] node-exporter、prometheus、grafana
 - [x] splash
-- [x] dashboard
+
 
 more...
+

@@ -1,8 +1,15 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitor
+
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: grafana-core
-  namespace: kube-system
+  namespace: monitor
   labels:
     app: grafana
     component: core
@@ -60,7 +67,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: grafana
-  namespace: kube-system
+  namespace: monitor
   labels:
     app: grafana
     component: core
@@ -79,7 +86,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: grafana
-  namespace: kube-system
+  namespace: monitor
 spec:
   rules:
     - host: k8s.grafana
