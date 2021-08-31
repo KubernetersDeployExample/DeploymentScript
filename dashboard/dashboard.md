@@ -48,7 +48,7 @@ helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/ && \
 helm repo update
 ```
 
-### create namespace
+### deployment
 
 ```shell
 # reset deployment
@@ -57,3 +57,17 @@ kubectl create ns monitor
 # install kubernetes-dashboard
 helm install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard -n monitor
 ```
+
+## Authorization
+
+```bash
+# Create use payne
+kubectl create serviceaccount payne --namespace monitor
+# Grant admin privileges
+kubectl create clusterrolebinding payne \
+		--clusterrole=admin \
+		--serviceaccount=monitor:payne
+# get that token
+kubectl -n monitor describe secret $(kubectl -n  monitor get secret | grep payne | awk '{print $1}')
+```
+
