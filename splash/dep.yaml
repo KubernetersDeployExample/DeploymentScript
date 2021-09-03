@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name:  splash
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: splash
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: splash
+  template:
+    metadata:
+      labels:
+        app: splash
+    spec:
+      containers:
+      - name: splash
+        image: scrapinghub/splash
+        resources:
+          limits:
+            memory: "2Gi"
+            cpu: "0.5"
+      restartPolicy: Always
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name:  splash
+spec:
+  selector:
+    app:  splash
+  type:  NodePort
+  ports:
+  - name:  "8050"
+    port:  8050
+    nodePort: 30805

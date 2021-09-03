@@ -55,6 +55,4 @@ spec:
       targetPort: 8050
       nodePort: 30805
   selector:
-    app: splash
-status:
-  loadBalancer: {}
+    app: splash 
