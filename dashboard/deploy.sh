@@ -20,7 +20,7 @@ kubectl create clusterrolebinding ${appName} --clusterrole=${Permission} --servi
 kubectl get secret -n  monitor  | grep "${appName}" | awk '{print $1}'  | xargs \
       kubectl -n monitor describe secret | grep "token:" | awk '{print $2}'
 
-kubectl get svc -n monitor ${appName} -o yaml | sed 's/\ClusterIP/NodePort/g' | kubectl apply  -f -
+kubectl get svc -n ${namespace} ${appName} -o yaml | sed 's/\ClusterIP/NodePort/g' | kubectl apply  -f -
 
 result=$(kubectl get svc -n monitor | grep ${appName} | awk '{print $5}')
 echo "PORT: ${result:4:5}"
