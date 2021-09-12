@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
-kafkaSVC_clusterIp=$(kubectl get svc kafka-service -n middleware | grep NodePort | awk '{print $3}')
+kafkaSVC_clusterIp=$(kubectl get svc kafka-service -n middleware | grep NodePort | awk '{print $3}') && \
 echo -e "kafka_service_clusterIp \t ${kafkaSVC_clusterIp}"
 
-zookeeperSVC_clusterIp=$(kubectl get svc zookeeper-service -n middleware | grep ClusterIP | awk '{print $3}')
+zookeeperSVC_clusterIp=$(kubectl get svc zookeeper-service -n middleware | grep ClusterIP | awk '{print $3}') && \
 echo -e "zookeeper_service_clusterIp \t ${zookeeperSVC_clusterIp}"
 
 kubectl apply -f zookeeper.yaml && kubectl apply -f kafka-svc.yaml

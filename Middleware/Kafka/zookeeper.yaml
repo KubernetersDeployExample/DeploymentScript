@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: zookeeper
-          image: wurstmeister/zookeeper:latest
+          image: awesomepayne/zookeeper:v0.1
           imagePullPolicy: IfNotPresent
           resources:
             requests:
