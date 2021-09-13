@@ -94,10 +94,9 @@ metadata:
   name: heketi
   labels:
     gulusterfs: heketi-service
-    deploy-heketi: support
 spec:
   selector:
-    name: deploy-heketi
+    gulusterfs: heketi-service
   ports:
     - port: 8080
       targetPort: 8080
