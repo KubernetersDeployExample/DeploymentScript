@@ -1,6 +1,7 @@
 # Install GFS(glusterfs)
 
 ## part 1, Install glusterfs software tools
+
 > all node
 
 ```shell

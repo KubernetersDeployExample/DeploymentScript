@@ -11,7 +11,7 @@ Crawler web tools
 
 ```shell
 # domestic
-kubectl apply -f https://gitee.com/environment-creator/kubernetes-deployment/raw/main/CrawlerUntil/splash/depployment.yaml
+kubectl apply -f https://gitee.com/environment-creator/kubernetes-deployment/raw/main/CrawlerUntil/splash/deployment_nodeport.yaml
 # foreign
-kubectl apply -f https://raw.githubusercontent.com/KubernetersDeployExample/script/main/CrawlerUntil/splash/depployment.yaml
+kubectl apply -f https://raw.githubusercontent.com/KubernetersDeployExample/script/main/CrawlerUntil/splash/deployment_nodeport.yaml
 ```
