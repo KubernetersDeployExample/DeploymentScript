@@ -8,11 +8,15 @@ metadata:
     description: GlusterFS DaemonSet
     tags: gulusterfs
 spec:
+  selector:
+    matchLabels:
+      app: gulusterfs
   template:
     metadata:
       name: glusterfs
       labels:
         glusterfs-node: pod
+        app: gulusterfs
     spec:
       nodeSelector:
         storagenode: glusterfs
