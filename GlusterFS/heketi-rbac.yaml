@@ -45,7 +45,6 @@ spec:
   selector:
     matchLabels:
       glusterfs: heketi-deployment
-      deploy-heketi: heketi-deployment
   template:
     metadata:
       labels:
