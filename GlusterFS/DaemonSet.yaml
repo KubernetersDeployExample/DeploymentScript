@@ -245,7 +245,7 @@ spec:
     metadata:
       name: glusterfs
       labels:
-        glusterfs-node: pod
+        glusterfs-node: daemonset
     spec:
       nodeSelector:
         storagenode: glusterfs
