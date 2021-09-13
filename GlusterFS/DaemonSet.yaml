@@ -240,7 +240,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: glusterfs
+      glusterfs-node: daemonset
   template:
     metadata:
       name: glusterfs
