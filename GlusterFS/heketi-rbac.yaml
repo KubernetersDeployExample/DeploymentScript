@@ -9,14 +9,96 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: heketi
-
 rules:
+  - apiGroups: [ "" ] # "" indicates the core API group
+    resources: [ "pods", "endpoints", "services" ]
+    verbs: [ "get", "list", "watch" ]
   - apiGroups:
       - ""
-    resources:
-      -
-  - verbs:
-      - get
-      - list
-      - watch
+    resources: [ "pods/exec" ]
+    verbs: [ "create" ]
 
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: heketi
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: heketi
+subjects:
+  - kind: ServiceAccount
+    name: heketi-service-account
+    namespace: defadult
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heketi
+  labels:
+    glusterfs: heketi-deployment
+    deploy-heketi: heketi-deployment
+spec:
+  selector:
+    matchLabels:
+      glusterfs: heketi-deployment
+      deploy-heketi: heketi-deployment
+  template:
+    metadata:
+      labels:
+        app: heketi-deployment
+    spec:
+      serviceAccountName: heketi-service-account
+      containers:
+        - name: heketi-deployment
+          image: heketi/heketi:latest
+          env:
+            - name: HEKETI_EXECUTOR
+              value: kubernetes
+            - name: HEKETI_FSTAB
+              value: "/var/lib/heketi/fstab"
+            - name: HEKETI_SNAPSHOT_LIMIT
+              value: '14'
+            - name: HEKETI_KUBE_GLUSTER_DAEMONSET
+              value: "y"
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: db
+              mountPath: "/var/lib/heketi"
+          readinessProbe:
+            timeoutSeconds: 3
+            initialDelaySeconds: 60
+            httpGet:
+              port: 8080
+              path: "/hello"
+          livenessProbe:
+            timeoutSeconds: 3
+            initialDelaySeconds: 60
+            httpGet:
+              port: 8080
+              path: "/hello"
+      volumes:
+        - name: db
+          hostPath:
+            path: "/heketi-data"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: heketi
+  labels:
+    gulusterfs: heketi-service
+    deploy-heketi: support
+spec:
+  selector:
+    name: deploy-heketi
+  ports:
+    - port: 8080
+      targetPort: 8080
+      name: deploy-heketi
