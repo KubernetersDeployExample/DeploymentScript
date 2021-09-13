@@ -27,3 +27,17 @@ kubectl exec -it --namespace middleware $(kubectl get pod -n middleware | grep k
 
 ## delete
 kubectl delete -f kafka.yaml && kubectl delete -f kafka-svc.yaml && kubectl delete -f zookeeper.yaml
+
+## Remote file deployment
+
+```shell
+# deploy zookeeper
+kubeclt apply -f https://raw.githubusercontent.com/KubernetersDeployExample/script/main/Middleware/Kafka/zookeeper.yaml
+# deploy kafka_service
+kubeclt apply -f https://raw.githubusercontent.com/KubernetersDeployExample/script/main/Middleware/Kafka/kafka-svc.yaml
+# deploy kafka
+curl https://raw.githubusercontent.com/KubernetersDeployExample/script/main/Middleware/Kafka/kafka.yaml | sed \
+ "s/@kafka_service_clusterIp/$(kubectl get svc kafka-service -n middleware | grep NodePort | awk \
+ '{print $3}')/g" | sed "s/@zookeeper_service_clusterIp/$(kubectl get svc zookeeper-service -n middleware | grep \
+ ClusterIP | awk '{print $3}')/g" | kubectl apply -f -
+```
