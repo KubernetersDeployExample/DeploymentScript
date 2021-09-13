@@ -2,57 +2,43 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: splash
+
 ---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: splash
   name: splash
-  namespace: splash
 spec:
   replicas: 3
   selector:
     matchLabels:
       app: splash
-  revisionHistoryLimit: 1
-  strategy: {}
   template:
     metadata:
       labels:
         app: splash
     spec:
       containers:
-        - image: scrapinghub/splash
-          imagePullPolicy: IfNotPresent
-          name: splash
-          ports:
-            - containerPort: 8050
+        - name: splash
+          image: scrapinghub/splash:latest
           resources:
-            requests:
-              memory: "2Gi"
-              cpu: "2"
             limits:
               memory: "4Gi"
-              cpu: "4"
+              cpu: "2"
       restartPolicy: Always
-status: {}
 
 ---
 
-apiVersion: v1
 kind: Service
+apiVersion: v1
 metadata:
-  labels:
-    app: splash
   name: splash
-  namespace: splash
 spec:
+  selector:
+    app: splash
   type: NodePort
   ports:
     - name: "8050"
       port: 8050
-      targetPort: 8050
       nodePort: 30805
-  selector:
-    app: splash 

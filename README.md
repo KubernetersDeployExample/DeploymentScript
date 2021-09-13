@@ -24,3 +24,6 @@ helm Version
 
 more...
 
+
+
+openssl req -x509 --sha256 -nodes -days 365 -newkey ras:2048 -keyout tls.key -out tls.crt -subj "/CN-nginxsvc/O-nginxsvc" 
