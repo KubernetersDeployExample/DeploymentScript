@@ -49,7 +49,7 @@ spec:
   template:
     metadata:
       labels:
-        app: heketi-deployment
+        glusterfs: heketi-deployment
     spec:
       serviceAccountName: heketi-service-account
       containers:
@@ -94,9 +94,10 @@ metadata:
   name: heketi
   labels:
     gulusterfs: heketi-service
+    deploy-heketi: support
 spec:
   selector:
-    gulusterfs: heketi-service
+    name: deploy-heketi
   ports:
     - port: 8080
       targetPort: 8080
