@@ -16,6 +16,9 @@ kubectl label nodes NODE_NAME storagenode=glusterfs
 ```
 
 ```shell
-curl https://raw.githubusercontent.com/KubernetersDeployExample/script/main/GlusterFS/DaemonSet.yaml | kubectl -f -
+# domestic
+kubectl apply -f https://gitee.com/kubernetes-deployment/ExampleScript/raw/main/GlusterFS/DaemonSet.yaml
+# foreign
+kubectl apply -f https://raw.githubusercontent.com/KubernetersDeployExample/script/main/GlusterFS/DaemonSet.yaml
 
 ```
