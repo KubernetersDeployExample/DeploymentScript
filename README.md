@@ -24,6 +24,9 @@ helm Version
 
 more...
 
+## repo
+github: https://github.com/KubernetersDeployExample/script
+gitee: https://gitee.com/environment-creator/kubernetes-deployment
 
 
 openssl req -x509 --sha256 -nodes -days 365 -newkey ras:2048 -keyout tls.key -out tls.crt -subj "/CN-nginxsvc/O-nginxsvc" 

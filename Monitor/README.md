@@ -1,15 +1,14 @@
 # monitor
-> If you want, adding a dashboard is a very good choice
 
 > Based on  node-export、 prometheus、 grafana
 
+If you want, adding a dashboard is a very good choice
 
 ## Deployment
 
 ### Scheme I
 
 Download this item
-
 
 ```shell
 cd script 
@@ -35,9 +34,8 @@ helm repo add aliyun  https://apphub.aliyuncs.com/ && helm repo update
 helm install (deploy Name) aliyun/prometheus-operator  [-n namespace]
 ```
 
+default user：admin Default passwd
 
-default user：admin
-Default passwd
 ```shell
 kubectl get secrets [-n namespace] (deploy Name)-grafana -o yaml |  head -3 | grep \
       "admin-password" | awk '{print $2}' | base64 -d | awk '{print $1}'
