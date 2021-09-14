@@ -2,14 +2,15 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: example-nginx
+  name: nginx_example
+
 ---
 # deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deploy-nginx
-  namespace: example-nginx
+  namespace: nginx_example
 spec:
   replicas: 3
   selector:
@@ -36,7 +37,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: nginx-service
-  namespace: example-nginx
+  namespace: nginx_example
   labels:
     app: nginx-service
 spec:
