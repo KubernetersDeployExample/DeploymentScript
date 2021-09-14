@@ -34,7 +34,8 @@ helm repo add aliyun  https://apphub.aliyuncs.com/ && helm repo update
 helm install (deploy Name) aliyun/prometheus-operator  [-n namespace]
 ```
 
-default user：admin Default passwd
+default user：admin 
+Default passwd
 
 ```shell
 kubectl get secrets [-n namespace] (deploy Name)-grafana -o yaml |  head -3 | grep \
