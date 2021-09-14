@@ -1,0 +1,56 @@
+{
+  "clusters": [
+    {
+      "nodes": [
+        {
+          "node": {
+            "hostnames": {
+              "manage": [
+                "ecs-b0ad-k8s-master"
+              ],
+              "storage": [
+                "192.168.0.27"
+              ]
+            },
+            "zone": 1
+          },
+          "devices": [
+            "/dev/sdb"
+          ]
+        },
+        {
+          "node": {
+            "hostnames": {
+              "manage": [
+                "ecs-e32f"
+              ],
+              "storage": [
+                "192.168.0.244"
+              ]
+            },
+            "zone": 1
+          },
+          "devices": [
+            "/dev/sdb"
+          ]
+        },
+        {
+          "node": {
+            "hostnames": {
+              "manage": [
+                "ecs-d97f-escluster"
+              ],
+              "storage": [
+                "192.168.0.131"
+              ]
+            },
+            "zone": 1
+          },
+          "devices": [
+            "/dev/sdb"
+          ]
+        }
+      ]
+    }
+  ]
+}
