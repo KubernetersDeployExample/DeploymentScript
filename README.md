@@ -1,6 +1,6 @@
 # Kubernetes Deploy Example
 
-
+Version
 ```shell
 Client Version{
   Major:"1", Minor:"19", 
@@ -24,12 +24,7 @@ helm Version{
 }
 ```
 
-> **`Client Version`**: version.Info{Major:"1", Minor:"19", GitVersion:"v1.19.8", 
->GitCommit:"fd5d41537aee486160ad9b5356a9d82363273721",
-> GitTreeState:"clean", BuildDate:"2021-02-17T12:41:51Z", 
-> GoVersion:"go1.15.8", Compiler:"gc", Platform:"linux/amd64"}
-
-> **`Server Version`**: version.Info{Major:"1", Minor:"19", GitVersion:"v1.19.14", GitCommit:"0fd2b5afdfe3134d6e1531365fdb37dd11f54d1c", GitTreeState:"clean", BuildDate:"2021-08-11T18:02:17Z", GoVersion:"go1.15.15", Compiler:"gc", Platform:"linux/amd64"}
+## Deploy Example
 
 - Monitor
     - [x] dashboard
