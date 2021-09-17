@@ -1,15 +1,15 @@
-#ingress:
-#  enabled: true
-#  annotations:
-#    kubernetes.io/ingress.class: "nginx"
-#    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-#    nginx.ingress.kubernetes.io/rewrite-target: /
-#  hosts:
-#    - dahboard.paynewu.com
-#  tls:
-#    - secretName: kubernetes-dashboard-certs
-#      hosts:
-#        - dashboard.paynewu.com
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  hosts:
+    - dahboard.paynewu.com
+  tls:
+    - secretName: kubernetes-dashboard-certs
+      hosts:
+        - dashboard.paynewu.com
 metricsScraper:
   enabled: true
 metrics-server:
