@@ -15,7 +15,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: monitor
+  name: kubernetes-dashboard
 
 ---
 
@@ -25,7 +25,7 @@ metadata:
   labels:
     k8s-app: kubernetes-dashboard
   name: kubernetes-dashboard
-  namespace: monitor
+  namespace: kubernetes-dashboard
 
 ---
 
@@ -35,7 +35,7 @@ metadata:
   labels:
     k8s-app: kubernetes-dashboard
   name: kubernetes-dashboard
-  namespace: monitor
+  namespace: kubernetes-dashboard
 spec:
   ports:
     - port: 443
@@ -51,7 +51,7 @@ metadata:
   labels:
     k8s-app: kubernetes-dashboard
   name: kubernetes-dashboard-certs
-  namespace: monitor
+  namespace: kubernetes-dashboard
 type: Opaque
 
 ---
@@ -62,7 +62,7 @@ metadata:
   labels:
     k8s-app: kubernetes-dashboard
   name: kubernetes-dashboard-csrf
-  namespace: monitor
+  namespace: kubernetes-dashboard
 type: Opaque
 data:
   csrf: ""
@@ -75,7 +75,7 @@ metadata:
   labels:
     k8s-app: kubernetes-dashboard
   name: kubernetes-dashboard-key-holder
-  namespace: monitor
+  namespace: kubernetes-dashboard
 type: Opaque
 
 ---
@@ -86,17 +86,17 @@ metadata:
   labels:
     k8s-app: kubernetes-dashboard
   name: kubernetes-dashboard-settings
-  namespace: monitor
+  namespace: kubernetes-dashboard
 
 ---
 
-apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   labels:
     k8s-app: kubernetes-dashboard
   name: kubernetes-dashboard
-  namespace: monitor
+  namespace: kubernetes-dashboard
 rules:
   # Allow Dashboard to get, update and delete Dashboard exclusive secrets.
   - apiGroups: [""]
@@ -140,7 +140,7 @@ metadata:
   labels:
     k8s-app: kubernetes-dashboard
   name: kubernetes-dashboard
-  namespace: monitor
+  namespace: kubernetes-dashboard
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -148,7 +148,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: kubernetes-dashboard
-    namespace: monitor
+    namespace: kubernetes-dashboard
 
 ---
 
@@ -159,11 +159,11 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: cluster-admin
+  name: kubernetes-dashboard
 subjects:
   - kind: ServiceAccount
     name: kubernetes-dashboard
-    namespace: monitor
+    namespace: kubernetes-dashboard
 
 ---
 
@@ -173,7 +173,7 @@ metadata:
   labels:
     k8s-app: kubernetes-dashboard
   name: kubernetes-dashboard
-  namespace: monitor
+  namespace: kubernetes-dashboard
 spec:
   replicas: 1
   revisionHistoryLimit: 10
@@ -239,7 +239,7 @@ metadata:
   labels:
     k8s-app: dashboard-metrics-scraper
   name: dashboard-metrics-scraper
-  namespace: monitor
+  namespace: kubernetes-dashboard
 spec:
   ports:
     - port: 8000
@@ -255,7 +255,7 @@ metadata:
   labels:
     k8s-app: dashboard-metrics-scraper
   name: dashboard-metrics-scraper
-  namespace: monitor
+  namespace: kubernetes-dashboard
 spec:
   replicas: 1
   revisionHistoryLimit: 10

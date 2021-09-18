@@ -1,56 +1,52 @@
-# Kubernetes Dashboard
-> Deployment Kubernetes Dashboard from yaml
+# Kubernetes Dashboard Deployment
 
-## Deployment 
+## Deployment Kubernetes Dashboard from yaml
+
+### Deployment
 
 ```shell
-# domestic
-kubectl apply -f https://gitee.com/environment-creator/kubernetes-deployment/raw/main/Monitor/dashboard/deployment.yaml
-# foreign
-kubectl apply -f https://raw.githubusercontent.com/KubernetersDeployExample/script/main/Monitor/dashboard/deployment.yaml
+# deployment 
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml
+# create service account
+kubectl create serviceaccount payne --namespace kubernetes-dashboard
+# kubectl cluster role binding
+kubectl create clusterrolebinding payne --clusterrole=cluster-admin --serviceaccount=kubernetes-dashboard:kubernetes-dashboard
+# get payne secrets token
+kubectl get secrets -n kubernetes-dashboard | grep payne | awk '{print $1}' | xargs kubectl -n kubernetes-dashboard describe secrets | grep "token:" | awk '{print $2}'
 ```
 
-## Authentication
-> Can't access normally when use default yaml，Because there is no permission
-> We should grant the default user `kubernetes-dashboard` or create a user related permissions
+### expose port
 
-
-### create user payne
+#### NodePort
 
 ```yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: payne
-  namespace: monitor
+kubectl get svc -n kubernetes-dashboard kubernetes-dashboard -o yaml | sed 's/\ClusterIP/NodePort/g' | kubectl apply -f
+  result=$(kubectl get svc -n kubernetes-dashboard | grep kubernetes-dashboard | awk '{print $5}')
+echo "Test IP: https://0.0.0.0:${result:4:5}"
 ```
 
-## grant Authority
-> Of course you can also directly grant Authority to default user kubernetes-dashboard, 
-> Just replace the `payne` below with `kubernetes-dashboard` 
+#### Ingress
 
-```yaml
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: payne
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
-subjects:
-- kind: ServiceAccount
-  name: payne
-  namespace: monitor
-```
+> ingress must be deployed first
 
-grant Authority from command 
 ```shell
-kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=monitor:kubernetes-dashboard
+openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/C=CN/ST=CS/L=CS/O=Dashboard/CN=kubernetes-dashboard/O=kubernetes-dashboard"
+kubectl create secret tls kubernetes-dashboard --namespace kubernetes-dashboard --key=tls.key --cert=tls.crt 
 ```
 
+**Configure the created certificate into kubernetes dashboard**
 
+```shell
+kubectl edit deployments kubernetes-dashboard -n kubernetes-dashboard	
+containers:
+- args:
+	- --tls-cert-file=/tls.crt
+	- --tls-key-file=/tls                                                                                                                                                                               .key
+```
+
+## Deployment Kubernetes Dashboard from helm
 
 ## Reference
+
 [URL](https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml) :https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml
 

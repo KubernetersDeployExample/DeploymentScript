@@ -3,9 +3,12 @@ kind: Ingress
 metadata:
   name: ingress-http
   namespace: dev
-  labels:
-    name: dev
 spec:
+  tls:
+    - secretName: tls-src # 密钥名字
+    - hosts:
+        - nginx-test.paynewu.com  # 对应的网站
+        - tomcat-test.paynewu.com
   rules:
     - host: nginx-test.paynewu.com
       http:

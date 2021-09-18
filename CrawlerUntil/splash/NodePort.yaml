@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: splash
+  namespace: crawleruntil
+spec:
+  selector:
+    app: splash
+  type: NodePort
+  ports:
+    - name: "8050"
+      port: 8050
+      nodePort: 30805
