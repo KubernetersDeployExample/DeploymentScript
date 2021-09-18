@@ -30,6 +30,10 @@ docker rmi  registry.cn-beijing.aliyuncs.com/google_registry/nginx-ingress-contr
 ```shell
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.0.0/deploy/static/provider/cloud/deploy.yaml
 ```
+```shell
+
+registry.aliyuncs.com/google_containers/nginx-ingress-controller
+```
 
 ## 书写ingress
 

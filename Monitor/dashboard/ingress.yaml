@@ -14,12 +14,10 @@ metadata:
   namespace: kubernetes-dashboard
 spec:
   tls:
-  # 域名
   - hosts:
     - dashboard.paynewu.com
     secretName: kubernetes-dashboard-certs
   rules:
-  # 域名
   - host: dashboard.paynewu.com
     http:
       paths:
