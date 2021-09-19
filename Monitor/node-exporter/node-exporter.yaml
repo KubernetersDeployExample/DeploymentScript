@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: node-exporter
-namespace: monitor
+  namespace: monitor
   labels:
     k8s-app: node-exporter
 spec:
@@ -25,16 +25,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  name: node-exporter
+  namespace: monitor
   labels:
     k8s-app: node-exporter
-  name: node-exporter
-namespace: monitor
 spec:
-  ports:
-  - name: http
-    port: 9100
-    nodePort: 31672
-    protocol: TCP
   type: NodePort
+  ports:
+    - port: 9100
+      nodePort: 31672
+      protocol: TCP
   selector:
     app: node-exporter
