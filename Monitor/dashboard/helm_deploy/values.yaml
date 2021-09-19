@@ -5,7 +5,7 @@ ingress:
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /
   hosts:
-    - dahboard.paynewu.com
+    - dashboard.paynewu.com
   tls:
     - secretName: kubernetes-dashboard-certs
       hosts:

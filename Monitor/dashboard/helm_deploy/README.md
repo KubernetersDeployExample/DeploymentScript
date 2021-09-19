@@ -2,7 +2,7 @@
 
 ## create Certificate
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/CN=kubernetes-dashboard/O=kubernetes-dashboard"
-kubectl create secret tls kubernetes-dashboard-certs --key=tls.key --cert=tls.crt
+kubectl create secret tls kubernetes-dashboard-certs -n monitor --key=tls.key --cert=tls.crt
 
 ## add kubernetes-dashboard repo of helm
 helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/ && helm repo update

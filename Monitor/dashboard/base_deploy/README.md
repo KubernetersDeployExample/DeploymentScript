@@ -31,7 +31,7 @@ echo "Test IP: https://0.0.0.0:${result:4:5}"
 
 ```shell
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/C=CN/ST=CS/L=CS/O=Dashboard/CN=kubernetes-dashboard/O=kubernetes-dashboard"
-kubectl create secret tls kubernetes-dashboard --namespace kubernetes-dashboard --key=tls.key --cert=tls.crt 
+kubectl create secret tls kubernetes-dashboard-certs --namespace kubernetes-dashboard --key=tls.key --cert=tls.crt 
 ```
 
 **Configure the created certificate into kubernetes dashboard**
@@ -41,7 +41,7 @@ kubectl edit deployments kubernetes-dashboard -n kubernetes-dashboard
 containers:
 - args:
 	- --tls-cert-file=/tls.crt
-	- --tls-key-file=/tls                                                                                                                                                                               .key
+	- --tls-key-file=/tls.key                                                                                                                                                                               .key
 ```
 
 ## Deployment Kubernetes Dashboard from helm
