@@ -23,6 +23,20 @@ spec:
           image: nginx:1.17.1
           ports:
             - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+  namespace: dev
+spec:
+  selector:
+    app: nginx-pod
+  ports:
+    - port: 80
+      targetPort: 80
+
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -44,18 +58,6 @@ spec:
           image: tomcat:8.5-jre10-slim
           ports:
             - containerPort: 8080
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: nginx-service
-  namespace: dev
-spec:
-  selector:
-    app: nginx-pod
-  ports:
-    - port: 80
-      targetPort: 80
 
 ---
 apiVersion: v1
