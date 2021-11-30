@@ -18,7 +18,7 @@ server Version: {
   GoVersion:"go1.15.15", Compiler:"gc", Platform:"linux/amd64"
 }
 
-helm Version{
+helm Version: {
   "Version":  "v3.5.2",
   "GitTreeState": "dirty",
   "GoVersion":  "go1.15.7"
