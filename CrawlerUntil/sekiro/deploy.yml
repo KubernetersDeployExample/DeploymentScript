@@ -28,6 +28,7 @@ spec:
             - containerPort: 5600
             - containerPort: 5601
             - containerPort: 5602
+            - containerPort: 5602
           resources:
             requests:
               memory: "1Gi"
@@ -56,3 +57,6 @@ spec:
     - name: sekiro-2
       port: 5602
       nodePort: 30562
+    - name: sekiro-3
+      port: 5603
+      nodePort: 30563
