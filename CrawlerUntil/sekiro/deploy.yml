@@ -55,4 +55,4 @@ spec:
       nodePort: 30561
     - name: sekiro-2
       port: 5602
-      nodePort: 30561
+      nodePort: 30562
