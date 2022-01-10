@@ -22,7 +22,6 @@ metadata:
     name: splash
   annotations:
     kubernetes.io/ingress.class: "nginx"
-
 spec:
   rules:
     - host: splash.paynewu.com
