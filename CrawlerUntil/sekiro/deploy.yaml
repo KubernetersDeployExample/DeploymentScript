@@ -28,7 +28,7 @@ spec:
             - containerPort: 5600
             - containerPort: 5601
             - containerPort: 5602
-            - containerPort: 5602
+            - containerPort: 5603
           resources:
             requests:
               memory: "1Gi"
