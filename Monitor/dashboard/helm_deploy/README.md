@@ -32,9 +32,6 @@ EOF
 helm install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard -n monitor -f values.yaml
 
 
-
-
-
 ## Helm Deployment
 
 > repo: kubernetes-dashboard https://kubernetes.github.io/dashboard/ 
