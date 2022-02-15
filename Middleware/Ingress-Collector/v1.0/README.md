@@ -16,5 +16,5 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/cont
 
 ```shell
 curl --resolve nginx-test.paynewu.com:80:127.0.0.1 http://nginx-test.paynewu.com
-curl --resolve tomcat-test.paynewu.com:8080:127.0.0.1 http://tomcat-test.paynewu.com
+curl --resolve tomcat-test.paynewu.com:80:127.0.0.1 http://tomcat-test.paynewu.com
 ```
