@@ -15,7 +15,6 @@ spec:
   selector:
     matchLabels:
       app: splash
-  revisionHistoryLimit: 1
   template:
     metadata:
       labels:
