@@ -215,7 +215,8 @@ spec:
         kubernetes.io/os: linux
       containers:
         - name: nginx-ingress-controller
-          image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.30.0
+          # image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.30.0
+          image: registry.cn-beijing.aliyuncs.com/google_registry/nginx-ingress-controller:0.30.0
           args:
             - /nginx-ingress-controller
             - --configmap=$(POD_NAMESPACE)/nginx-configuration
