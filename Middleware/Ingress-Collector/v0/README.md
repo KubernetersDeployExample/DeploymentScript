@@ -1,4 +1,4 @@
-# v0.30.0
+# v0
 
 ## 下载 ingress-nginx
 
@@ -20,7 +20,14 @@ docker rmi  registry.cn-beijing.aliyuncs.com/google_registry/nginx-ingress-contr
 ```
 
 ### 方法二：将`mandatory.yaml`中
+image:
+```diff
+-quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.30.0
++registry.cn-beijing.aliyuncs.com/google_registry/nginx-ingress-controller:0.30.0
+```
 
-`image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.30.0`,替换为
-`registry.cn-beijing.aliyuncs.com/google_registry/nginx-ingress-controller:0.30.0`
 
+
+## referer
+
+https://cr.console.aliyun.com/cn-hangzhou/instances/images
