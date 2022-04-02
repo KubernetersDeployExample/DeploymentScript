@@ -31,3 +31,5 @@ image:
 ## referer
 
 https://cr.console.aliyun.com/cn-hangzhou/instances/images
+
+https://github.com/kubernetes/ingress-nginx
