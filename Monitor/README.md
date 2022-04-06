@@ -30,15 +30,12 @@ kubectl apply -f https://raw.githubusercontent.com/KubernetersDeployExample/scri
 > repo: https://apphub.aliyuncs.com/
 
 ```shell
-helm repo add aliyun  https://apphub.aliyuncs.com/ && helm repo update 
-helm install (deploy Name) aliyun/prometheus-operator  [-n namespace]
+helm repo add aliyuncs  https://apphub.aliyuncs.com/ && helm repo update 
+helm install (deploy Name) aliyuncs/prometheus-operator  [-n namespace]
 ```
 
-default user：admin 
-Default passwd
-
-```shell
-kubectl get secrets [-n namespace] (deploy Name)-grafana -o yaml |  head -3 | grep \
-      "admin-password" | awk '{print $2}' | base64 -d | awk '{print $1}'
+default user：admin
+Default passwd: prom-operator
+```bash
+kubectl get secret -n monitor -o jsonpath="{.items[3].data.admin-password}" | base64 --decode
 ```
-
