@@ -31,7 +31,8 @@ kubectl apply -f https://raw.githubusercontent.com/KubernetersDeployExample/scri
 
 ```shell
 helm repo add aliyuncs  https://apphub.aliyuncs.com/ && helm repo update 
-helm install (deploy Name) aliyuncs/prometheus-operator  [-n namespace]
+# helm install (deploy Name) aliyuncs/prometheus-operator  [-n namespace]
+helm install prometheus-operator -n monitor --create-namespace aliyuncs/prometheus-operator
 ```
 
 default user：admin
