@@ -1,10 +1,5 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata:
-  name: sekiro
-  namespace: ramblerutils
-  labels:
-    app: sekiro
 spec:
   replicas: 3
   selector:
