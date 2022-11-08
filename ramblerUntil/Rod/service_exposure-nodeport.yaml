@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: rod
+  namespace: ramblerutils
+spec:
+  selector:
+    app: rod
+  type: NodePort
+  ports:
+    - port: 7317
+      nodePort: 30713
