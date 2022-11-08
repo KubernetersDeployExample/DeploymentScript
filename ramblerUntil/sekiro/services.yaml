@@ -8,15 +8,11 @@ spec:
     app: sekiro
   type: NodePort
   ports:
-    - name: sekiro-0
-      port: 5600
+    - port: 5600
       nodePort: 30560
-    - name: sekiro-1
-      port: 5601
+    - port: 5601
       nodePort: 30561
-    - name: sekiro-2
-      port: 5602
+    - port: 5602
       nodePort: 30562
-    - name: sekiro-3
-      port: 5603
+    - port: 5603
       nodePort: 30563

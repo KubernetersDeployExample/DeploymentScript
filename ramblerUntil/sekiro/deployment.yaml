@@ -1,10 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
+metadata:
+  name: sekiro
+  namespace: ramblerutils
+  labels:
+    app: sekiro
 spec:
   replicas: 3
-  selector:
-    matchLabels:
-      app: sekiro
   template:
     metadata:
       name: sekiro
@@ -19,11 +21,8 @@ spec:
             - containerPort: 5601
             - containerPort: 5602
             - containerPort: 5603
-          resources:
-            requests:
-              memory: "1Gi"
-              cpu: "0.4"
-            limits:
-              memory: "3Gi"
-              cpu: "1"
       restartPolicy: Always
+  selector:
+    matchLabels:
+      app: sekiro
+

@@ -16,10 +16,6 @@ spec:
       containers:
         - name: rod
           image: ghcr.io/go-rod/rod
-          resources:
-            limits:
-              memory: "0.6"
-              cpu: "0.6"
           ports:
             - containerPort: 7317
           imagePullPolicy: IfNotPresent
