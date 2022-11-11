@@ -19,7 +19,7 @@ spec:
           ports:
             - containerPort: 7317
           imagePullPolicy: IfNotPresent
-      restartPolicy: Always
+      restartPolicy: OnFailure
   selector:
     matchLabels:
       app: rod
