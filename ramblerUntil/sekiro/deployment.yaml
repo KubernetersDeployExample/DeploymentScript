@@ -21,7 +21,7 @@ spec:
             - containerPort: 5601
             - containerPort: 5602
             - containerPort: 5603
-      restartPolicy: Always
+      restartPolicy: OnFailure
   selector:
     matchLabels:
       app: sekiro
