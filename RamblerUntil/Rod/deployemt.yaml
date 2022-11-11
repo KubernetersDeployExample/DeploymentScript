@@ -15,11 +15,11 @@ spec:
     spec:
       containers:
         - name: rod
-          image: ghcr.io/go-rod/rod
+          image: ghcr.io/go-rod/rod:latest
           ports:
             - containerPort: 7317
           imagePullPolicy: IfNotPresent
-      restartPolicy: OnFailure
+      restartPolicy: Always
   selector:
     matchLabels:
       app: rod
