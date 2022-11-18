@@ -4,7 +4,7 @@ sharded
 Rapid deployment of mongodb-sharded based on helm
 
 ```bash
-helm install -n storage --set shards=4 db bitnami/mongodb-sharded
+helm install -n storage --set shards=7 --generate-name bitnami/mongodb-sharded
 ```
 
 ## Online sample files

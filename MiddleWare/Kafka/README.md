@@ -53,3 +53,6 @@ curl https://raw.githubusercontent.com/KubernetersDeployExample/script/main/Midd
 
 ## Helm deploy application
 
+```bash
+helm install --set replicaCount=3 --generate-name bitnami/kafka
+```

@@ -20,10 +20,11 @@ exportfs -r
 systemctl restart rpcbind && systemctl restart nfs && systemctl status rpcbind && systemctl status nfs
 ```
 
-cat pv.yaml | sed 's/\${NFS_IP}/192.168.0.27/g' | sed 's/\${PV_PATH}/\/data\/nfs\/redis/g' | kubectl apply -f -
+cat pv.yaml | sed 's/\${NFS_IP}/192.168.0.27/g' | sed 's/\${PV_PATH}/\/data\/nfs\/redis/g' | kubectl
+apply -f -
 
 ## helm
 
 ```bash
-helm install r -n storage --set cluster.nodes=9,cluster.replicas=2  bitnami/redis-cluster
+helm install -n storage --set cluster.nodes=9,cluster.replicas=2 --generate-name  bitnami/redis-cluster
 ```
