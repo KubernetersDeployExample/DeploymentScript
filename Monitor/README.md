@@ -1,6 +1,6 @@
 # monitor
 
-> Based on  node-export、 prometheus、 grafana
+> Based on node-export、 prometheus、 grafana
 
 If you want, adding a dashboard is a very good choice
 
@@ -30,11 +30,11 @@ kubectl apply -f https://raw.githubusercontent.com/KubernetersDeployExample/scri
 > repo: https://apphub.aliyuncs.com/
 
 ```shell
-helm repo add aliyun  https://apphub.aliyuncs.com/ && helm repo update 
-helm install (deploy Name) aliyun/prometheus-operator  [-n namespace]
+helm repo add apphub  https://apphub.aliyuncs.com/ && helm repo update 
+helm install --grande-name aliyun/prometheus-operator  [-n namespace]
 ```
 
-default user：admin 
+default user：admin
 Default passwd
 
 ```shell

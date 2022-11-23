@@ -26,5 +26,8 @@ apply -f -
 ## helm
 
 ```bash
+# single redis
+helm install -n storage --generate-name bitnami/redis
+# redis cluster
 helm install -n storage --set cluster.nodes=9,cluster.replicas=2 --generate-name  bitnami/redis-cluster
 ```

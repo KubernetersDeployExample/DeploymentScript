@@ -47,7 +47,7 @@ spec:
               mountPath: "/etc/ssl"
               readOnly: true
           securityContext:
-            capabilities: {}
+            capabilities: { }
             privileged: true
           readinessProbe:
             timeoutSeconds: 3
