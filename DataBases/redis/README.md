@@ -27,7 +27,17 @@ apply -f -
 
 ```bash
 # single redis
-helm install -n storage --generate-name bitnami/redis
+helm install \
+  -n storage --create-namespace \
+  --generate-name bitnami/redis
+
+```
+
+```bash
 # redis cluster
-helm install -n storage --set cluster.nodes=9,cluster.replicas=2 --generate-name  bitnami/redis-cluster
+helm install \
+  --set cluster.nodes=9,cluster.replicas=2 \
+  -n storage --create-namespace \
+  --generate-name bitnami/redis-cluster
+
 ```
